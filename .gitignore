@@ -1,10 +1,10 @@
-########################################
-## gitignore for amontes261.github.io ##
-## ----- Created by Alex Montes ----- ##
-########################################
+##################################
+## gitignore for alexmontes.net ##
+## -- Created by Alex Montes -- ##
+##################################
 
 /static/word_backgrounds/Photoshop Files
-
+package-lock.json
 
 # NUXT / VUETIFY AUTO-GENERATED GITIGNORE LINES BELOW #
 
