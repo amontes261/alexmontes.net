@@ -3,7 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - mySite',
+    titleTemplate: 'Alex Montes - %s',
     title: 'mySite',
     htmlAttrs: {
       lang: 'en'
@@ -15,6 +15,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat&display=swap' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Mulish&display=swap' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },

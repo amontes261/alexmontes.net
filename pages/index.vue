@@ -1,29 +1,58 @@
 <template>
-    <div class="text-center">
-        <div class="allContainer">
-            <v-card color="black" class="comingSoonCard">
-                <div class="textContainer">
-                    <div class="comingSoonHeader">
-                        Coming Soon
-                    </div>
-                    <div class= "smallTextContainer">
-                        <div> This webpage is still under development. </div>
-                        <div class= "completionAndCreatedByText divSpacer"> Expected completion: Fall 2023 </div>
-                        <div>
-                            In the meantime, you can check out the&nbsp;
-                            <a class= "repoLink" href="https://github.com/amontes261/mySite">repository</a>
-                            &nbsp;for updates.
-                        </div>
-                        <div> Thanks for coming & see you soon!</div>
-                        <div class= "completionAndCreatedByText divSpacer"> Created by Alex Montes </div>
-                        </div>
-                </div>
-            </v-card>
+    <div class="allContainer">
+        <div class="cardContainer">
+            <div class="homeItems">
+                <!-- <img class="avatar" width="150" src="/portrait.png" />
+
+
+                    TEST
+                -->
+            </div>
         </div>
+
+
+
+
+
+
     </div>
 </template>
 
+<script>
+  export default {
+    head() {
+        return {
+            title: "Home"
+        };
+    }
+  }
+</script>
+
 <style>
+    .allContainer{
+        height: 100vh;
+    }
+
+    .cardContainer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .homeItems{
+        display: flex;
+        align-items: center;
+    }
+
+    .temp{
+        /* for testing... */
+        height: 110vh;
+        color: red;
+    }
+
+    /* Coming Soon CSS Below */
+    /*
     .allContainer {
         flex-direction: column;
         font-size: calc(10px + 1.75vmin);
@@ -32,6 +61,7 @@
         justify-content: center;
         align-items: center;
     }
+    */
 
     .comingSoonCard {
         color: black;
