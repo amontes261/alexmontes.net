@@ -1,36 +1,38 @@
 <template>
     <v-app dark class="allAppUmbrella" fill-height fluid>
-        <v-row>
-            <v-col class="navPanel" :class="$vuetify.theme.dark ? 'navPanelDark' : 'navPanelLight'" cols="3">
-                <div class="navPanelContainer"> <!-- centered -->
-                    <div class="logoContainer">
+        <!-- BEGIN SIDEBAR IMPLEMENTATION -->
+        <!-- If vw exceeds a certain minimum (mobileViewpointWidthTipover), the below renders. -->
+        <v-row v-if="$vuetify.breakpoint.width >= mobileViewpointWidthTipover">
+            <v-col class="sideBar" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'" cols="3">
+                <div class="align-items-center">
+                    <div>
                         <img v-if="$vuetify.theme.dark" class="pb-6" width="150" src="/logo_darkMode.png" />
                         <img v-if="!$vuetify.theme.dark" class="pb-6" width="150" src="/logo_lightMode.png" />
                     </div>
-                    <div class="navContainer">
-                        <div class="linkContainer">
-                            <div class="linkParentDiv">
-                                <router-link :class="this.$route.name == 'index' ? 'activeNavLink' : 'navLink'" to="/">
+                    <div>
+                        <div>
+                            <div class="sideBarLinkDiv">
+                                <router-link :class="this.$route.name == 'index' ? 'currentRouteSideBarLink' : 'sideBarLink'" to="/">
                                     Home
                                 </router-link>
                             </div>
-                            <div class="linkParentDiv">
-                                <router-link :class="this.$route.name == 'about' ? 'activeNavLink' : 'navLink'" to="/about">
+                            <div class="sideBarLinkDiv">
+                                <router-link :class="this.$route.name == 'about' ? 'currentRouteSideBarLink' : 'sideBarLink'" to="/about">
                                     About
                                 </router-link>
                             </div>
-                            <div class="linkParentDiv">
-                                <router-link :class="this.$route.name == 'experience' ? 'activeNavLink' : 'navLink'" to="/experience">
+                            <div class="sideBarLinkDiv">
+                                <router-link :class="this.$route.name == 'experience' ? 'currentRouteSideBarLink' : 'sideBarLink'" to="/experience">
                                     Experience
                                 </router-link>
                             </div>
-                            <div class="linkParentDiv">
-                                <router-link :class="this.$route.name == 'projects' ? 'activeNavLink' : 'navLink'" to="/projects">
+                            <div class="sideBarLinkDiv">
+                                <router-link :class="this.$route.name == 'projects' ? 'currentRouteSideBarLink' : 'sideBarLink'" to="/projects">
                                     Projects
                                 </router-link>
                             </div>
-                            <div class="linkParentDiv">
-                                <router-link :class="this.$route.name == 'contact' ? 'activeNavLink' : 'navLink'" to="/contact">
+                            <div class="sideBarLinkDiv">
+                                <router-link :class="this.$route.name == 'contact' ? 'currentRouteSideBarLink' : 'sideBarLink'" to="/contact">
                                     Contact
                                 </router-link>
                             </div>
@@ -52,18 +54,100 @@
                     </div>
                 </div>
             </v-col>
-            <v-col class="nuxtApp" cols="9">
+            <v-col class="nuxtAppSideBarContainer" cols="9">
                 <v-main>
-                    <Nuxt :class="$vuetify.theme.dark ? 'nuxtBodyDark': 'nuxtBodyLight'"/>
+                    <Nuxt class="nuxtBodySideBar" :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
                 </v-main>
             </v-col>
         </v-row>
+
+        <!-- END SIDEBAR IMPLEMENTATION -->
+        <!-- BEGIN NAVBAR IMPLEMENTATION -->
+        <!-- If vw DOES NOT exceed a certain minimum (mobileViewpointWidthTipover), the below renders. -->
+        
+        <div v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover">
+            <div class="navBarContainer">
+                <div class="navBarContents">
+                    <div class="navBarLogoContainer">
+                        <img v-if="$vuetify.theme.dark" height="50" src="/logo_darkMode.png" />
+                        <img v-if="!$vuetify.theme.dark" height="50" src="/logo_lightMode.png" />
+                    </div>
+                    <div style="width:100%;" />
+
+                    <!-- BEGIN EXPANDED NAVBAR LINKS IMPLEMENTATION -->
+                    <!-- If vw exceeds a certain minimum (navBarWidthTipover), the below renders. -->
+                    <div v-if="$vuetify.breakpoint.width >= navBarWidthTipover" class="expandedNavBarLinkContainer">
+                        <div class="expandedNavBarLink">
+                            <router-link :class="this.$route.name == 'index' ? 'currentRouteNavBarLink' : 'navBarLink'" to="/">
+                                Home
+                            </router-link>
+                        </div>
+                        <div class="expandedNavBarLink">
+                            <router-link :class="this.$route.name == 'about' ? 'currentRouteNavBarLink' : 'navBarLink'" to="/about">
+                                About
+                            </router-link>
+                        </div>
+                        <div class="expandedNavBarLink">
+                            <router-link :class="this.$route.name == 'experience' ? 'currentRouteNavBarLink' : 'navBarLink'" to="/experience">
+                                Experience
+                            </router-link>
+                        </div>
+                        <div class="expandedNavBarLink">
+                            <router-link :class="this.$route.name == 'projects' ? 'currentRouteNavBarLink' : 'navBarLink'" to="/projects">
+                                Projects
+                            </router-link>
+                        </div>
+                        <div class="expandedNavBarLink">
+                            <router-link :class="this.$route.name == 'contact' ? 'currentRouteNavBarLink' : 'navBarLink'" to="/contact">
+                                Contact
+                            </router-link>
+                        </div>
+                    </div>
+
+                    <!-- END EXPANDED NAVBAR LINKS IMPLEMENTATION -->
+                    <!-- BEGIN COMPACT NAVBAR LINKS IMPLEMENTATION -->
+                    <!-- If vw DOES NOT exceed a certain minimum (navBarWidthTipover), the below renders. -->
+                    <div v-if="$vuetify.breakpoint.width < navBarWidthTipover">
+                        <v-menu top close-on-click>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn icon x-large v-bind="attrs" v-on="on" >
+                                    <v-icon>mdi-menu</v-icon>
+                                </v-btn>
+                            </template>
+                            <v-list right>
+                                <div class="text-right listLinkContainer">
+                                    <div v-for="(path, index) in navRoutes" :key="index">
+                                        <v-list-item-content>
+                                            <router-link :to="path.to" class="menuLink">
+                                                {{ path.title }}
+                                            </router-link>
+                                        </v-list-item-content>
+                                        
+                                    </div>
+                                </div>
+                            </v-list>
+                        </v-menu>
+                    </div>
+                </div>
+            </div>
+            <div class="nuxtAppNavBarContainer">
+                <Nuxt class="nuxtBodyNavBar" :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
+            </div>
+        </div>
     </v-app>
 </template>
 
 <style>
-.activeNavLink{
-    font-size: 200%;
+.currentRouteNavBarLink{
+    font-size: 140%;
+    font-weight: 600;
+    padding: 5%;
+    text-decoration: none;
+    opacity: 1;
+    color: #5086d6;
+}
+
+.currentRouteSideBarLink{
     font-weight: 600;
     padding: 5%;
     text-decoration: none;
@@ -73,15 +157,95 @@
     font-size: 225%;
 }
 
+.expandedNavBarLink{
+    display: flex;
+    margin: 0 5%;
+    text-align: center;
+    align-items: center;
+}
+
+.expandedNavBarLinkContainer{
+    display: flex;
+    justify-content: right;
+}
+
 .letMeKnowText{
     text-decoration: none;
 }
 
-.linkParentDiv{
+.listLinkContainer{
     width: 100%;
 }
 
-.navLink{
+.sideBarLinkDiv{
+    width: 100%;
+}
+
+.menuLink{
+    font-size: 150%;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: 0.4s;
+    color: #3874CB;
+}
+
+.menuLink:hover {
+    opacity: 1;
+    color: cornflowerblue;
+
+}
+
+.menuLink:active {
+    color: #2256a3;
+}
+
+.navBarContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    top: 0;
+    height: 15vh;
+    width: 100vw;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    background-color: black;
+}
+
+.navBarContents{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.navBarLink{
+    font-size: 125%;
+    font-weight: 600;
+    text-decoration: none;
+    opacity: 0.5;
+    transition: 0.4s;
+    color: #3874CB;
+}
+
+
+.navBarLink:hover {
+    opacity: 1;
+    color: cornflowerblue;
+    font-size: 140%;
+}
+
+.navBarLink:active {
+    color: #2256a3;
+}
+
+.navBarLogoContainer{
+    
+}
+
+.sideBarLink{
     font-size: 200%;
     font-weight: 600;
     padding: 5%;
@@ -92,17 +256,17 @@
     color: #3874CB;
 }
 
-.navLink:hover {
+.sideBarLink:hover {
     opacity: 1;
     color: cornflowerblue;
     font-size: 225%;
 }
 
-.navLink:active {
+.sideBarLink:active {
     color: #2256a3;
 }
 
-.navPanel{
+.sideBar{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,31 +278,47 @@
     top: 0;
 }
 
-.navPanelContainer{
+.align-items-center{
     align-items: center;
 }
 
-.navPanelDark{
+.blackFade{
     background-color: black;
     transition: 0.4s;
 }
 
-.navPanelLight{
+.whiteFade{
     background-color: white;
+    transition: 0.4s;
 }
 
-.nuxtApp{
+.nuxtAppNavBarContainer{
+    width: 100vw;
+    background-color: black;
+}
+
+.nuxtAppSideBarContainer{
     margin-left: 450px;
     height: 100vh;
 }
 
-.nuxtBodyDark{
+
+.nuxtBodyNavBar{
+    
+}
+
+.nuxtBodySidePanel{
+
+}
+
+.softBlackFade{
     background-color: #121212;
     transition: 0.4s;
 }
 
-.nuxtBodyLight{
+.softWhiteFade{
     background-color: #F5F5F5;
+    transition: 0.4s;
 }
 
 .smallLinksContainer{
@@ -169,6 +349,15 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
+        mobileViewpointWidthTipover: 1250,
+        navBarWidthTipover: 750,
+        navRoutes: [
+            { title: 'Home', to: '/' },
+            { title: 'About', to: 'about' },
+            { title: 'Experience', to: 'experience' },
+            { title: 'Projects', to: 'projects' },
+            { title: 'Contact', to: 'contact' },
+        ],
     }
   }
 }
