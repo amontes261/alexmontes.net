@@ -2,7 +2,7 @@
     <v-app dark class="allAppUmbrella" fill-height fluid>
         <!-- BEGIN SIDEBAR IMPLEMENTATION -->
         <!-- If vw exceeds a certain minimum (mobileViewpointWidthTipover), the below renders. -->
-        <v-row v-if="$vuetify.breakpoint.width >= mobileViewpointWidthTipover">
+        <v-row class="pa-0" v-if="$vuetify.breakpoint.width >= mobileViewpointWidthTipover">
             <v-col class="sideBar" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'" cols="3">
                 <div class="align-items-center">
                     <div>
@@ -43,10 +43,7 @@
                     </div>
                     <div class="smallLinksContainer">
                         <div class="mt-6">
-                            © 2023 Alex Montes
-                        </div>
-                        <div>
-                            All rights reserved.
+                            © 2023 All rights reserved.
                         </div>
                         <div class="py-5">
                             Something look off? <a class="letMeKnowText" href="https://github.com/amontes261/mySite/issues" target="_blank">Let me know.</a>
@@ -56,7 +53,7 @@
             </v-col>
             <v-col class="nuxtAppSideBarContainer" cols="9">
                 <v-main>
-                    <Nuxt class="nuxtBodySideBar" :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
+                    <Nuxt :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
                 </v-main>
             </v-col>
         </v-row>
@@ -138,209 +135,209 @@
 </template>
 
 <style>
-.currentRouteNavBarLink{
-    font-size: 140%;
-    font-weight: 600;
-    padding: 5%;
-    text-decoration: none;
-    opacity: 1;
-    color: #5086d6;
-}
+    .currentRouteNavBarLink{
+        font-size: 140%;
+        font-weight: 600;
+        padding: 5%;
+        text-decoration: none;
+        opacity: 1;
+        color: #5086d6;
+    }
 
-.currentRouteSideBarLink{
-    font-weight: 600;
-    padding: 5%;
-    text-decoration: none;
-    padding-left: 0;
-    opacity: 1;
-    color: #5086d6;
-    font-size: 225%;
-}
+    .currentRouteSideBarLink{
+        font-weight: 600;
+        padding: 5%;
+        text-decoration: none;
+        padding-left: 0;
+        opacity: 1;
+        color: #5086d6;
+        font-size: 225%;
+    }
 
-.expandedNavBarLink{
-    display: flex;
-    margin: 0 5%;
-    text-align: center;
-    align-items: center;
-}
+    .expandedNavBarLink{
+        display: flex;
+        margin: 0 5%;
+        text-align: center;
+        align-items: center;
+    }
 
-.expandedNavBarLinkContainer{
-    display: flex;
-    justify-content: right;
-}
+    .expandedNavBarLinkContainer{
+        display: flex;
+        justify-content: right;
+    }
 
-.letMeKnowText{
-    text-decoration: none;
-}
+    .letMeKnowText{
+        text-decoration: none;
+    }
 
-.listLinkContainer{
-    width: 100%;
-}
+    .listLinkContainer{
+        width: 100%;
+    }
 
-.sideBarLinkDiv{
-    width: 100%;
-}
+    .sideBarLinkDiv{
+        width: 100%;
+    }
 
-.menuLink{
-    font-size: 150%;
-    font-weight: 600;
-    text-decoration: none;
-    opacity: 0.6;
-    transition: 0.4s;
-    color: #3874CB;
-}
+    .menuLink{
+        font-size: 150%;
+        font-weight: 600;
+        text-decoration: none;
+        opacity: 0.6;
+        transition: 0.4s;
+        color: #3874CB;
+    }
 
-.menuLink:hover {
-    opacity: 1;
-    color: cornflowerblue;
+    .menuLink:hover {
+        opacity: 1;
+        color: cornflowerblue;
 
-}
+    }
 
-.menuLink:active {
-    color: #2256a3;
-}
+    .menuLink:active {
+        color: #2256a3;
+    }
 
-.navBarContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    top: 0;
-    height: 15vh;
-    width: 100vw;
-    position: sticky;
-    z-index: 10;
-    top: 0;
-    background-color: black;
-}
+    .navBarContainer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        top: 0;
+        height: 15vh;
+        width: 100vw;
+        position: sticky;
+        z-index: 10;
+        top: 0;
+        background-color: black;
+    }
 
-.navBarContents{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    padding: 20px 40px;
-}
+    .navBarContents{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding: 20px 40px;
+    }
 
-.navBarLink{
-    font-size: 125%;
-    font-weight: 600;
-    text-decoration: none;
-    opacity: 0.5;
-    transition: 0.4s;
-    color: #3874CB;
-}
-
-
-.navBarLink:hover {
-    opacity: 1;
-    color: cornflowerblue;
-    font-size: 140%;
-}
-
-.navBarLink:active {
-    color: #2256a3;
-}
-
-.navBarLogoContainer{
-    
-}
-
-.sideBarLink{
-    font-size: 200%;
-    font-weight: 600;
-    padding: 5%;
-    text-decoration: none;
-    padding-left: 0;
-    opacity: 0.5;
-    transition: 0.4s;
-    color: #3874CB;
-}
-
-.sideBarLink:hover {
-    opacity: 1;
-    color: cornflowerblue;
-    font-size: 225%;
-}
-
-.sideBarLink:active {
-    color: #2256a3;
-}
-
-.sideBar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    top: 0;
-    width: 450px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-}
-
-.align-items-center{
-    align-items: center;
-}
-
-.blackFade{
-    background-color: black;
-    transition: 0.4s;
-}
-
-.whiteFade{
-    background-color: white;
-    transition: 0.4s;
-}
-
-.nuxtAppNavBarContainer{
-    width: 100vw;
-    background-color: black;
-}
-
-.nuxtAppSideBarContainer{
-    margin-left: 450px;
-    height: 100vh;
-}
+    .navBarLink{
+        font-size: 125%;
+        font-weight: 600;
+        text-decoration: none;
+        opacity: 0.5;
+        transition: 0.4s;
+        color: #3874CB;
+    }
 
 
-.nuxtBodyNavBar{
-    
-}
+    .navBarLink:hover {
+        opacity: 1;
+        color: cornflowerblue;
+        font-size: 140%;
+    }
 
-.nuxtBodySidePanel{
+    .navBarLink:active {
+        color: #2256a3;
+    }
 
-}
+    .navBarLogoContainer{
+        
+    }
 
-.softBlackFade{
-    background-color: #121212;
-    transition: 0.4s;
-}
+    .sideBarLink{
+        font-size: 200%;
+        font-weight: 600;
+        padding: 5%;
+        text-decoration: none;
+        padding-left: 0;
+        opacity: 0.5;
+        transition: 0.4s;
+        color: #3874CB;
+    }
 
-.softWhiteFade{
-    background-color: #F5F5F5;
-    transition: 0.4s;
-}
+    .sideBarLink:hover {
+        opacity: 1;
+        color: cornflowerblue;
+        font-size: 225%;
+    }
 
-.smallLinksContainer{
-    font-size: small;
-}
+    .sideBarLink:active {
+        color: #2256a3;
+    }
 
-.allAppUmbrella{
-    font-family: "Mulish", Arial, Helvetica, sans-serif;
-    background-color: cyan; /* for testing */
-}
+    .sideBar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center; /* also looks nice w/o this... */
+        
+        height: 100vh;
+        position: fixed;
+        top: 0;
+    }
 
-/* dw about below*/
+    .align-items-center{
+        align-items: center;
+    }
 
-.comingSoonContainer {
-    background-color: black;
-    background-image: url('/word_backgrounds/opaque/coming_soon.png');
-    background-size: cover;
-    background-position: center;
-    display: grid;
-    height: 100vh;
-    place-items: center;
-  }
+    .blackFade{
+        background-color: black;
+        transition: 0.4s;
+    }
+
+    .whiteFade{
+        background-color: white;
+        transition: 0.4s;
+    }
+
+    .nuxtAppNavBarContainer{
+        width: 100vw;
+        background-color: black;
+    }
+
+    .nuxtAppSideBarContainer{
+        margin-left: 25vw;
+        padding: 0;
+        height: 100vh;
+    }
+
+
+    .nuxtBodyNavBar{
+        
+    }
+
+    .nuxtBodySidePanel{
+
+    }
+
+    .softBlackFade{
+        background-color: #121212;
+        transition: 0.4s;
+    }
+
+    .softWhiteFade{
+        background-color: #F5F5F5;
+        transition: 0.4s;
+    }
+
+    .smallLinksContainer{
+        font-size: small;
+    }
+
+    .allAppUmbrella{
+        font-family: "Mulish", Arial, Helvetica, sans-serif;
+        background-color: cyan; /* for testing */
+    }
+
+    /* dw about below*/
+
+    .comingSoonContainer {
+        background-color: black;
+        background-image: url('/word_backgrounds/opaque/coming_soon.png');
+        background-size: cover;
+        background-position: center;
+        display: grid;
+        height: 100vh;
+        place-items: center;
+    }
   
 </style>
 
