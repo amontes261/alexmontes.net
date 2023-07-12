@@ -1,17 +1,15 @@
 <template>
-    <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeContainerWide' : ''">
+    <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeContainer-widescreen' : ''">
         <div class="homeContent">
-            <!-- BEGIN WIDE IMPLEMENTATION -->
-            <!-- If vw exceeds a certain minimum (mobileViewpointWidthTipover), the below renders. -->
             <div>
-                <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'tempClass leftContent' : 'topContent'">
+                <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'leftContent-widescreen' : 'topContent-tallscreen'">
                     <div class="portraitInnerContainer">
-                        <img :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'portrait' : 'portraitNarrow'" src="/home_photos/homePicture.jpg" />
+                        <img :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'portrait-widescreen' : 'portrait-tallscreen'" src="/home_photos/homePicture.jpg" />
                     </div>
                 </div>
-                <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'rightContent' : 'bottomContent'">
-                    <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'outer' : 'outerNarrow'">
-                        <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'rightContentInnerContainerWide' : 'rightContentInnerContainerNarrow'">
+                <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'rightContent-widescreen' : 'bottomContent-tallscreen'">
+                    <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'rightContentOuterContainer-widescreen' : 'bottomContentOuterContainer-tallscreen'">
+                        <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'rightContentInnerContainer-widescreen' : 'bottomContentInnerContainer-tallscreen'">
                             <h2 class="nameHeader">
                                 Alex Montes
                             </h2>
@@ -22,20 +20,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="subheaderContainer">
-                                <h3> <i> Based out of Brooklyn, New York </i> </h3>
-                            </div>
-                            <v-row class="homeIconsContainer mt-6">
+                            <h3>
+                                <i> Based out of Brooklyn, New York </i>
+                            </h3>
+                            <v-row class="mt-6">
                                 <v-col v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover" cols="1" />
                                 <v-col v-for="(icon, index) in homeSocialIcons" :key="index" class="homeLink" cols="2">
                                     <a :href="icon.destination" target="_blank">
-                                        <img :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeIconWide' : 'homeIconNarrow'" :alt="icon.logo" :src="$vuetify.theme.dark ? icon.darkPath : icon.lightPath" />
+                                        <img :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeIcon-widescreen' : 'homeIcon-tallscreen'" :alt="icon.logo" :src="$vuetify.theme.dark ? icon.darkPath : icon.lightPath" />
                                     </a>
                                 </v-col>
                                 <v-col v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover" cols="1" />
                             </v-row>
-
-                            <!-- <v-btn @click="debug($vuetify.breakpoint.width < 1350)">DEBUG</v-btn> -->
                         </div>
                     </div>
                 </div>
@@ -109,11 +105,6 @@
         head() {
             return { title: "Home" }
         },
-        methods: {
-            debug(param){
-                console.log(param);
-            }
-        },
         mounted:function() {
             var elements = document.getElementsByClassName('typewrite');
             for (var i = 0; i < elements.length; i++) {
@@ -133,44 +124,19 @@
 </script>
 
 <style>
-    .black{
-        color: black;
-    }
-
-    .white{
-        color: white;
-    }
-
-    .outer{
-        display: flex;
-        align-items: center;
-        width: 100%;
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    .outerNarrow{
-        justify-content: center;
-    }
-
+    /*  =====================
+        GENERALIZED CSS BELOW 
+        ===================== */
     .animatedTextContainer{
         width: 100%;
     }
 
-    .bottomContent{
-        width: 100%;
-        text-align: center;
-        padding: 20px;
+    .black{
+        color: black;
     }
 
     .centerTypewriterText{
         margin: 0 auto;
-    }
-
-    .homeContainerWide{
-        display: flex;
-        height: 100vh;
-        justify-content: center;
     }
 
     .homeContent{
@@ -181,27 +147,6 @@
         transform: translateY(-50%)
     }
 
-    .homeIconWide{
-        width: 2.25vw;
-    }
-
-    .homeIconNarrow{
-        width: 5vw;
-    }
-
-    .homeIconsContainer{
-
-    }
-
-    .leftContent{
-        display: flex;
-        width: 50%;
-        float: left;
-        padding: 20px;
-        justify-content: center;
-        align-items: center;
-    }
-
     .nameHeader{
         font-size: 3.5em;
         font-weight: 700;
@@ -210,52 +155,12 @@
         font-family: "Montserrat", Arial, Helvetica, sans-serif;
     }
 
-    .portrait{
-        width: 75%;
-        border-radius: 30px;
-    }
-
-    .portraitNarrow{
-        margin-top: calc(10vh + 5vw);
-        width: 50%;
-        border-radius: 30px;
-    }
-
-    .tempClass{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50vh; /* Set the desired height for the outer container */
-    }
-
     .portraitInnerContainer{
         text-align: center;
     }
 
-    .rightContent{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        float: right;
-        padding: 20px;
-        height: 50vh;
-    }
-
-    .rightContentInnerContainerWide{
-        text-align: left; /* Optional: Center the content horizontally within the inner div */
-    }
-
-    .rightContentInnerContainerNarrow{
-        text-align: center;
-    }
-
-    .subheaderContainer{
-    }
-
-    .topContent{
-        text-align: center;
-        width: 100%;
+    .white{
+        color: white;
     }
 
     .wrap {
@@ -273,11 +178,87 @@
         50% { border-color: transparent }
     }
 
-    /* ===== */
-    .temp{
-        /* for testing... */
-        height: 110vh;
-        color: red;
-        border: magenta;
+    /*  ====================
+        WIDESCREEN CSS BELOW 
+        ==================== */
+
+    .homeContainer-widescreen{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .homeIcon-widescreen{
+        width: 2.25vw;
+    }
+
+    .leftContent-widescreen{
+        display: flex;
+        width: 50%;
+        float: left;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+    }
+
+    .rightContentOuterContainer-widescreen{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .portrait-widescreen{
+        width: 75%;
+        border-radius: 30px;
+    }
+
+    .rightContent-widescreen{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        float: right;
+        padding: 20px;
+        height: 50vh;
+    }
+
+    .rightContentInnerContainer-widescreen{
+        text-align: left; /* Optional: Center the content horizontally within the inner div */
+    }
+
+    /*  ====================
+        TALLSCREEN CSS BELOW 
+        ==================== */
+
+    .bottomContentOuterContainer-tallscreen{
+        justify-content: center;
+    }
+
+    .bottomContent-tallscreen{
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .homeIcon-tallscreen{
+        width: 5vw;
+    }
+
+    .portrait-tallscreen{
+        margin-top: calc(10vh + 5vw);
+        width: 50%;
+        border-radius: 30px;
+    }
+
+    .bottomContentInnerContainer-tallscreen{
+        text-align: center;
+    }
+
+    .topContent-tallscreen{
+        text-align: center;
+        width: 100%;
     }
 </style>

@@ -7,8 +7,10 @@
                 <v-col class="sideBar" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'" cols="3">
                     <div class="align-items-center">
                         <div>
-                            <img v-if="$vuetify.theme.dark" class="pb-6" width="125" src="/logo_darkMode.png" />
-                            <img v-if="!$vuetify.theme.dark" class="pb-6" width="125" src="/logo_lightMode.png" />
+                            <router-link to="/">
+                                <img v-if="$vuetify.theme.dark" class="pb-6" width="125" src="/logo_darkMode.png" />
+                                <img v-if="!$vuetify.theme.dark" class="pb-6" width="125" src="/logo_lightMode.png" />
+                            </router-link>
                         </div>
                         <div>
                             <div>
