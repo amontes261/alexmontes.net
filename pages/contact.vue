@@ -38,7 +38,12 @@
         },
         head() {
             return {
-                title: "Contact | AM"
+                title: "Contact | AM",
+                meta: {
+                    property: "og:title",
+                    name: 'title',
+                    content: 'Get in Contact - Alex Montes'
+                },
             };
         }
     }
