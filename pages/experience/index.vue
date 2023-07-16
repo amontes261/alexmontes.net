@@ -1,5 +1,7 @@
 <template>
-
+    <div>
+        test
+    </div>
 
 
 </template>
@@ -8,7 +10,7 @@
   export default {
     head() {
         return {
-            title: "Experience"
+            title: "Experience | AM"
         };
     }
   }

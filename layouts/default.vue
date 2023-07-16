@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="themeButtonContainer">
-                            <v-btn :ripple="false" @click="$vuetify.theme.dark = !$vuetify.theme.dark" class="mt-9" v-bind:light="$vuetify.theme.dark" v-bind:dark="!$vuetify.theme.dark" small v-model="$vuetify.theme.dark" :color="$vuetify.theme.dark ? '#64B5F6' : 'black'"><strong> {{ $vuetify.theme.dark ? "Light Mode" : "Dark Mode" }} </strong></v-btn>
+                            <button @click="$vuetify.theme.dark = !$vuetify.theme.dark" class="themebutton mt-5" :class="$vuetify.theme.dark ? 'themebutton-darkMode' : 'themebutton-lightMode'" role="button"> <strong> {{ $vuetify.theme.dark ? "Light Mode" : "Dark Mode" }} </strong> </button>
                         </div>
                         <div class="smallLinksContainer">
                             <div class="mt-6">
@@ -110,9 +110,12 @@
                         <!-- BEGIN COMPACT NAVBAR LINKS IMPLEMENTATION -->
                         <!-- If vw DOES NOT exceed a certain minimum (navBarWidthTipover), the below renders. -->
                         <div>
-                            <v-btn @click="$vuetify.theme.dark = !$vuetify.theme.dark" icon x-large>
+                            <v-btn :ripple=false @click="$vuetify.theme.dark = !$vuetify.theme.dark" icon x-large>
+                                <div class="navBarThemeButton" />
+                                <!--
                                 <v-icon v-if="$vuetify.theme.dark">mdi-weather-sunny</v-icon>
                                 <v-icon v-if="!$vuetify.theme.dark">mdi-weather-night</v-icon>
+                                -->
                             </v-btn>
                         </div>
                         <div v-if="$vuetify.breakpoint.width < navBarWidthTipover">
@@ -147,10 +150,7 @@
             </div>
         </div>
         <v-overlay :opacity="1" :value="overlay">
-            <div class="loadBar">
-
-            </div>
-            
+            <div class="loadBar" />
         </v-overlay>
     </v-app>
 </template>
@@ -267,6 +267,46 @@
         
     }
 
+    .navBarThemeButton {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        transform: scale(var(--ggs,1));
+        border:2px solid;
+        border-radius:100px;
+        width:20px;
+        height:20px;
+    }
+
+    .navBarThemeButton::after, .navBarThemeButton::before {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        display: block
+    }
+
+    .navBarThemeButton::before {
+        border:5px solid;
+        border-top-left-radius:100px;
+        border-bottom-left-radius:100px;
+        border-right: 0;
+        width:9px;
+        height:18px;
+        top:-1px;
+        left:-1px
+    }
+
+    .navBarThemeButton::after {
+        border:4px solid;
+        border-top-right-radius:100px;
+        border-bottom-right-radius:100px;
+        border-left: 0;
+        width:4px;
+        height:8px;
+        right:4px;
+        top:4px
+    }
+
     .sideBarLink{
         font-size: 200%;
         font-weight: 600;
@@ -296,6 +336,66 @@
         height: 100vh;
         position: fixed;
         top: 0;
+    }
+
+    .themebutton {
+        appearance: none;
+        border-radius: 15px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 16px;
+        font-weight: 600;
+        line-height: normal;
+        margin: 0;
+        min-height: 60px;
+        min-width: 0;
+        outline: none;
+        padding: 16px 24px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 100%;
+        will-change: transform;
+    }
+
+    .themebutton:disabled {
+        pointer-events: none;
+    }
+
+    .themebutton:hover {
+        transform: translateY(-5px);
+    }
+
+    .themebutton:active {
+        box-shadow: none;
+        transform: translateY(0);
+    }
+
+    .themebutton-darkMode {
+        background-color: black;
+        border: 2px solid #1A1A1A;
+        color: #FFFFFF;
+        transition: 0.4s;
+    }
+
+    .themebutton-darkMode:hover {
+        box-shadow: rgba(255, 255, 255, 0.25) 0 8px 15px;
+    }
+
+    .themebutton-lightMode {
+        background-color: white;
+        border: 2px solid #e9e9e9;
+        color: black;
+        transition: 0.4s;
+    }
+
+    .themebutton-lightMode:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     }
 
     .align-items-center{
@@ -393,26 +493,30 @@
 </style>
 
 <script>
-export default {
-  name: 'DefaultLayout',
-  data () {
-    return {
-        mobileViewpointWidthTipover: 850,
-        navBarWidthTipover: 750,
-        navRoutes: [
-            { title: 'Home', to: '/', icon: 'mdi-home' },
-            { title: 'About', to: 'about', icon: 'mdi-information' },
-            { title: 'Experience', to: 'experience', icon: 'mdi-account-school' },
-            { title: 'Projects', to: 'projects', icon: 'mdi-hammer-wrench' },
-            { title: 'Contact', to: 'contact', icon: 'mdi-email' },
-        ],
-        overlay: true
+    export default {        
+        data () {
+            return {
+                mobileViewpointWidthTipover: 850,
+                navBarWidthTipover: 750,
+                navRoutes: [
+                    { title: 'Home', to: '/', icon: 'mdi-home' },
+                    { title: 'About', to: 'about', icon: 'mdi-information' },
+                    { title: 'Experience', to: 'experience', icon: 'mdi-account-school' },
+                    { title: 'Projects', to: 'projects', icon: 'mdi-hammer-wrench' },
+                    { title: 'Contact', to: 'contact', icon: 'mdi-email' },
+                ],
+                overlay: true
+            }
+        },
+        head() {
+            return {
+                title: "Loading | AM"
+            };
+        },
+        mounted() {
+            setTimeout(() => {
+                this.overlay = false;
+            }, 750);
+        }
     }
-  },
-  mounted() {
-    setTimeout(() => {
-        this.overlay = false;
-    }, 750);
-  }
-}
 </script>

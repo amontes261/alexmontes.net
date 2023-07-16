@@ -25,7 +25,7 @@
                             </h3>
                             <v-row class="mt-6">
                                 <v-col v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover" cols="1" />
-                                <v-col v-for="(icon, index) in homeSocialIcons" :key="index" class="homeLink" cols="2">
+                                <v-col v-for="(icon, index) in homeSocialIcons" :key="index" cols="2">
                                     <a :href="icon.destination" target="_blank">
                                         <img :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeIcon-widescreen' : 'homeIcon-tallscreen'" :alt="icon.logo" :src="$vuetify.theme.dark ? icon.darkPath : icon.lightPath" />
                                     </a>
@@ -94,16 +94,18 @@
             return {
                 mobileViewpointWidthTipover: 850,
                 homeSocialIcons: [
-                    { name: 'LinkedIn', darkPath: '/home_social_icons/darkMode/linkedin.png', lightPath: '/home_social_icons/lightMode/linkedin.png', destination: 'https://www.linkedin.com/in/amontes261/'},
-                    { name: 'Discord', darkPath: '/home_social_icons/darkMode/discord.png', lightPath: '/home_social_icons/lightMode/discord.png', destination: 'https://discordapp.com/users/403355889253220352'},
-                    { name: 'GitHub', darkPath: '/home_social_icons/darkMode/github.png', lightPath: '/home_social_icons/lightMode/github.png', destination: 'https://github.com/amontes261'},
-                    { name: 'Instagram', darkPath: '/home_social_icons/darkMode/instagram.png', lightPath: '/home_social_icons/lightMode/instagram.png', destination: 'https://www.instagram.com/a.montes28/'},
-                    { name: 'Xbox', darkPath: '/home_social_icons/darkMode/xbox.png', lightPath: '/home_social_icons/lightMode/xbox.png', destination: 'https://account.xbox.com/en-us/profile?gamertag=TheMixxRemixx' },
-                ],
+                    { name: 'LinkedIn', darkPath: '/social_icons/darkMode/linkedin.png', lightPath: '/social_icons/lightMode/linkedin.png', destination: 'https://www.linkedin.com/in/amontes261/'},
+                    { name: 'Discord', darkPath: '/social_icons/darkMode/discord.png', lightPath: '/social_icons/lightMode/discord.png', destination: 'https://discordapp.com/users/403355889253220352'},
+                    { name: 'GitHub', darkPath: '/social_icons/darkMode/github.png', lightPath: '/social_icons/lightMode/github.png', destination: 'https://github.com/amontes261'},
+                    { name: 'Instagram', darkPath: '/social_icons/darkMode/instagram.png', lightPath: '/social_icons/lightMode/instagram.png', destination: 'https://www.instagram.com/a.montes28/'},
+                    { name: 'Xbox', darkPath: '/social_icons/darkMode/xbox.png', lightPath: '/social_icons/lightMode/xbox.png', destination: 'https://account.xbox.com/en-us/profile?gamertag=TheMixxRemixx' },
+                ]
             }
         },
         head() {
-            return { title: "Home" }
+            return {
+                title: "Home | AM"
+            };
         },
         mounted:function() {
             var elements = document.getElementsByClassName('typewrite');
@@ -171,8 +173,6 @@
         animation:
             cursorBlink 1s step-end infinite;
     }
-
-    /* The typewriter cursor effect */
     @keyframes cursorBlink {
         from, to { border-color: cornflowerblue }
         50% { border-color: transparent }
