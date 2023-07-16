@@ -104,7 +104,12 @@
         },
         head() {
             return {
-                title: "Home | AM"
+                title: "Home | AM",
+                meta: {
+                    property: "og:title",
+                    name: 'title',
+                    content: 'Alex Montes\' Portfolio'
+                },
             };
         },
         mounted:function() {
