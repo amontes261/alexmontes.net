@@ -27,7 +27,7 @@
         },
         head() {
             return {
-                title: "About | AM"
+                title: "RPI Experience | AM"
             };
         }
     }

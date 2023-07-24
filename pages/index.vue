@@ -30,7 +30,7 @@
                                         <img :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeIcon-widescreen' : 'homeIcon-tallscreen'" :alt="icon.logo" :src="$vuetify.theme.dark ? icon.darkPath : icon.lightPath" />
                                     </a>
                                 </v-col>
-                                <v-col v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover" cols="1" />
+                                <v-col v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover" cols="3" />
                             </v-row>
                         </div>
                     </div>
@@ -98,18 +98,18 @@
                     { name: 'Discord', darkPath: '/social_icons/darkMode/discord.png', lightPath: '/social_icons/lightMode/discord.png', destination: 'https://discordapp.com/users/403355889253220352'},
                     { name: 'GitHub', darkPath: '/social_icons/darkMode/github.png', lightPath: '/social_icons/lightMode/github.png', destination: 'https://github.com/amontes261'},
                     { name: 'Instagram', darkPath: '/social_icons/darkMode/instagram.png', lightPath: '/social_icons/lightMode/instagram.png', destination: 'https://www.instagram.com/a.montes28/'},
-                    { name: 'Xbox', darkPath: '/social_icons/darkMode/xbox.png', lightPath: '/social_icons/lightMode/xbox.png', destination: 'https://account.xbox.com/en-us/profile?gamertag=TheMixxRemixx' },
+                    /* { name: 'Xbox', darkPath: '/social_icons/darkMode/xbox.png', lightPath: '/social_icons/lightMode/xbox.png', destination: 'https://account.xbox.com/en-us/profile?gamertag=TheMixxRemixx' }, */
                 ]
             }
         },
         head() {
             return {
                 title: "Home | AM",
-                meta: {
+                meta: [{
                     property: "og:title",
                     name: 'title',
                     content: 'Alex Montes\' Portfolio'
-                },
+                }],
             };
         },
         mounted:function() {
@@ -194,7 +194,7 @@
     }
 
     .homeIcon-widescreen{
-        width: 2.25vw;
+        width: 2.5vw;
     }
 
     .leftContent-widescreen{

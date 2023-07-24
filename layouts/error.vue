@@ -54,8 +54,7 @@
         },
         data () {
             return {
-                otherError: 'An error occurred',
-                mobileViewpointWidthTipover: 850
+                mobileViewpointWidthTipover: 850,
             }
         },
         head() {

@@ -39,11 +39,11 @@
         head() {
             return {
                 title: "Contact | AM",
-                meta: {
+                meta: [{
                     property: "og:title",
                     name: 'title',
                     content: 'Get in Contact - Alex Montes'
-                },
+                }],
             };
         }
     }

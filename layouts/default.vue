@@ -110,12 +110,8 @@
                         <!-- BEGIN COMPACT NAVBAR LINKS IMPLEMENTATION -->
                         <!-- If vw DOES NOT exceed a certain minimum (navBarWidthTipover), the below renders. -->
                         <div>
-                            <v-btn :ripple=false @click="$vuetify.theme.dark = !$vuetify.theme.dark" icon x-large>
+                            <v-btn plain :ripple=false @click="$vuetify.theme.dark = !$vuetify.theme.dark" icon x-large>
                                 <div class="navBarThemeButton" />
-                                <!--
-                                <v-icon v-if="$vuetify.theme.dark">mdi-weather-sunny</v-icon>
-                                <v-icon v-if="!$vuetify.theme.dark">mdi-weather-night</v-icon>
-                                -->
                             </v-btn>
                         </div>
                         <div v-if="$vuetify.breakpoint.width < navBarWidthTipover">
@@ -145,7 +141,7 @@
                     </div>
                 </div>
                 <div class="nuxtAppNavBarContainer">
-                    <Nuxt class="nuxtBodyNavBar" :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
+                    <Nuxt :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
                 </div>
             </div>
         </div>
@@ -156,14 +152,16 @@
 </template>
 
 <style>
-    .currentRouteNavBarLink{
-        font-size: 140%;
-        font-weight: 600;
-        padding: 5%;
-        text-decoration: none;
-        opacity: 1;
-        color: #5086d6;
+    .test{
+        background-color: #121212;
     }
+    /*  =====================
+        GENERALIZED CSS BELOW
+        ===================== */
+        
+    /*  ====================
+        WIDESCREEN CSS BELOW
+        ==================== */
 
     .currentRouteSideBarLink{
         font-weight: 600;
@@ -173,6 +171,23 @@
         opacity: 1;
         color: #5086d6;
         font-size: 225%;
+    }
+
+    .letMeKnowText{
+        text-decoration: none;
+    }
+
+    /*  ====================
+        TALLSCREEN CSS BELOW
+        ==================== */
+    
+    .currentRouteNavBarLink{
+        font-size: 140%;
+        font-weight: 600;
+        padding: 5%;
+        text-decoration: none;
+        opacity: 1;
+        color: #5086d6;
     }
 
     .expandedNavBarLink{
@@ -187,9 +202,7 @@
         justify-content: right;
     }
 
-    .letMeKnowText{
-        text-decoration: none;
-    }
+    
 
     .listLinkContainer{
         width: 100%;
@@ -333,7 +346,7 @@
         align-items: center;
         justify-content: center;
         text-align: center; /* also looks nice w/o this... */
-        height: 100vh;
+        min-height: 100vh;
         position: fixed;
         top: 0;
     }
@@ -420,7 +433,7 @@
     .nuxtAppSideBarContainer{
         margin-left: 25vw;
         padding: 0;
-        height: 100vh;
+        min-height: 100vh;
     }
 
 
@@ -443,13 +456,15 @@
     }
 
     .smallLinksContainer{
-        font-size: small;
+        font-size: 1vw;
+        font-weight: 900;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     .allAppUmbrella{
         font-family: "Mulish", Arial, Helvetica, sans-serif;
-        width: 100vw;
-        height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
     }
 
     /* loading contents */
@@ -510,7 +525,7 @@
         },
         head() {
             return {
-                title: "Loading | AM"
+                title: "Welcome | AM"
             };
         },
         mounted() {

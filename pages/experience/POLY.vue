@@ -27,7 +27,7 @@
         },
         head() {
             return {
-                title: "About | AM"
+                title: "Poly Experience | AM"
             };
         }
     }
