@@ -3,7 +3,7 @@
         <div class="allAppUmbrella" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'">
             <!-- BEGIN SIDEBAR IMPLEMENTATION -->
             <!-- If vw exceeds a certain minimum (mobileViewpointWidthTipover), the below renders. -->
-            <v-row class="pa-0" v-if="$vuetify.breakpoint.width >= mobileViewpointWidthTipover">
+            <v-row class="pa-0" v-if="$route.name != 'blank' && $vuetify.breakpoint.width >= mobileViewpointWidthTipover">
                 <v-col class="sideBar" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'" cols="3">
                     <div class="align-items-center">
                         <div>
@@ -60,13 +60,18 @@
                     </v-main>
                 </v-col>
             </v-row>
+            <div v-else-if="$route.name == 'blank' && $vuetify.breakpoint.width >= mobileViewpointWidthTipover" class="nuxtAppNoSideBarContainer">
+                <v-main>
+                    <Nuxt :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
+                </v-main>
+            </div>
 
             <!-- END SIDEBAR IMPLEMENTATION -->
             <!-- BEGIN NAVBAR IMPLEMENTATION -->
             <!-- If vw DOES NOT exceed a certain minimum (mobileViewpointWidthTipover), the below renders. -->
             
-            <div v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover && !overlay">
-                <div class="navBarContainer" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'">
+            <div v-else-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover && !overlay">
+                <div v-if="$route.name != 'blank'" class="navBarContainer" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'">
                     <div class="navBarContents">
                         <div class="navBarLogoContainer">
                             <router-link to="/">
@@ -145,7 +150,7 @@
                 </div>
             </div>
         </div>
-        <v-overlay :opacity="1" :value="overlay">
+        <v-overlay v-if="$route.name != 'blank'" :opacity="1" :value="overlay">
             <div class="loadBar" />
         </v-overlay>
     </v-app>
@@ -428,6 +433,11 @@
     .nuxtAppNavBarContainer{
         width: 100vw;
         background-color: black;
+    }
+
+    .nuxtAppNoSideBarContainer{
+        padding: 0;
+        min-height: 100vh;
     }
 
     .nuxtAppSideBarContainer{

@@ -2,7 +2,7 @@
   <v-app dark>
     <div>
         <template>
-            <div class="errorPageContainer">
+            <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'errorPageContainer-widescreen' : 'errorPageContainer-tallscreen'">
                 <div v-if="error.statusCode === 404" :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'largeNumberBackgroundContainer-widescreen' : 'largeNumberBackgroundContainer-tallscreen'">
                     404
                 </div>
@@ -36,7 +36,6 @@
                     </div>
                 </div>
             </div>
-            
         </template>
     </div>    
   </v-app>
@@ -66,7 +65,7 @@
 </script>
 
 <style>
-    .errorPageContainer{
+    .errorPageContainer-widescreen{
         height: 100vh;
     }
 
@@ -183,6 +182,10 @@
 
 
     /* TALL  */
+
+    .errorPageContainer-tallscreen{
+        height: 85vh;
+    }
 
     .headerContent404-tallscreen{
         font-size: 8vw;
