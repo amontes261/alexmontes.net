@@ -3,7 +3,7 @@
         <div class="allAppUmbrella" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'">
             <!-- BEGIN SIDEBAR IMPLEMENTATION -->
             <!-- If vw exceeds a certain minimum (mobileViewpointWidthTipover), the below renders. -->
-            <v-row class="pa-0" v-if="$route.name != 'blank' && $vuetify.breakpoint.width >= mobileViewpointWidthTipover">
+            <v-row class="pa-0" v-if="$route.name != 'blank' && $route.name != 'comingSoon' && $vuetify.breakpoint.width >= mobileViewpointWidthTipover">
                 <v-col class="sideBar" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'" cols="3">
                     <div class="align-items-center">
                         <div>
@@ -46,10 +46,10 @@
                         </div>
                         <div class="smallLinksContainer">
                             <div class="mt-6">
-                                © 2023 All rights reserved.
-                            </div>
-                            <div class="py-5">
                                 Something look off? <a class="letMeKnowText" href="https://github.com/amontes261/mySite/issues" target="_blank">Let me know.</a>
+                            </div>
+                            <div class="py-3">
+                                Updated 01/19/2024
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     </v-main>
                 </v-col>
             </v-row>
-            <div v-else-if="$route.name == 'blank' && $vuetify.breakpoint.width >= mobileViewpointWidthTipover" class="nuxtAppNoSideBarContainer">
+            <div v-else-if="($route.name == 'blank' || $route.name == 'comingSoon') && $vuetify.breakpoint.width >= mobileViewpointWidthTipover" class="nuxtAppNoSideBarContainer">
                 <v-main>
                     <Nuxt :class="$vuetify.theme.dark ? 'softBlackFade': 'softWhiteFade'"/>
                 </v-main>
@@ -71,7 +71,7 @@
             <!-- If vw DOES NOT exceed a certain minimum (mobileViewpointWidthTipover), the below renders. -->
             
             <div v-else-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover && !overlay">
-                <div v-if="$route.name != 'blank'" class="navBarContainer" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'">
+                <div v-if="$route.name != 'blank' && $route.name != 'comingSoon'" class="navBarContainer" :class="$vuetify.theme.dark ? 'blackFade' : 'whiteFade'">
                     <div class="navBarContents">
                         <div class="navBarLogoContainer">
                             <router-link to="/">
@@ -466,7 +466,7 @@
     }
 
     .smallLinksContainer{
-        font-size: 1vw;
+        font-size: 0.75vw;
         font-weight: 900;
         font-family: Arial, Helvetica, sans-serif;
     }

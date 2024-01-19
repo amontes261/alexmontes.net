@@ -1,24 +1,22 @@
 <template>
     <div class="text-center">
         <div class="allContainer">
-            <v-card color="black" class="comingSoonCard">
-                <div class="textContainer">
-                    <div class="comingSoonHeader">
-                        Coming Soon
+            <div class="textContainer">
+                <div class="headerContainer">
+                    <div class="almostThereHeader">
+                        Almost There.
                     </div>
-                    <div class= "smallTextContainer">
-                        <div> This webpage is still under development. </div>
-                        <div class= "completionAndCreatedByText divSpacer"> Expected completion: Fall 2023 </div>
-                        <div>
-                            In the meantime, you can check out the&nbsp;
-                            <a class= "repoLink" href="https://github.com/amontes261/mySite">repository</a>
-                            &nbsp;for updates.
-                        </div>
-                        <div> Thanks for coming & see you soon!</div>
-                        <div class= "completionAndCreatedByText divSpacer"> Created by Alex Montes </div>
-                        </div>
                 </div>
-            </v-card>
+                <div class= "smallTextContainer">
+                    <div>
+                        This portfolio is still under development. Check out the
+                        <a class="repoLink" href="https://github.com/amontes261/mySite" target="_blank">repository</a>
+                        for updates.
+                    </div>
+                    <div class="pt-4 completionText divSpacer"> Expected completion: Fall 2024 </div>
+                </div>
+                <img class="pt-7" width="75" src="/logo_darkMode.png" />
+            </div>
         </div>
     </div>
 </template>
@@ -31,23 +29,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100vh;
     }
 
-    .comingSoonCard {
-        color: black;
-    }
-
-    .completionAndCreatedByText{
-        font-size: calc(2px + 2vmin);
-    }
-
-    .comingSoonHeader {
+    .almostThereHeader {
         font-weight: 800;
         font-size: calc(60px + 5vmin);
     }
 
+    .completionText{
+        font-size: calc(2px + 1.5vmin);
+    }
+
     .divSpacer{
         height: 5vh;
+    }
+
+    .headerContainer{
+        
     }
 
     .repoLink{
@@ -56,12 +55,12 @@
     }
 
     .smallTextContainer{
-        padding-top: 1em;
+        font-size: calc(15px + 1.5vmin);
+        padding-top: 0.25em;
     }
 
     .textContainer{
         color: white;
-        background-color: black;
         padding-left: 1.5em;
         padding-right: 1.5em;
         padding-top: 1em;

@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                             <h3>
-                                <i> Based out of Brooklyn, New York </i>
+                                <i> Brooklyn, New York </i>
                             </h3>
                             <v-row class="mt-6">
                                 <v-col v-if="$vuetify.breakpoint.width < mobileViewpointWidthTipover" cols="1" />
@@ -91,16 +91,17 @@
 
     export default {
         data () {
-            return {
+            this.$router.push('/comingSoon'); // remove when read
+            /*return {
                 mobileViewpointWidthTipover: 850,
                 homeSocialIcons: [
                     { name: 'LinkedIn', darkPath: '/social_icons/darkMode/linkedin.png', lightPath: '/social_icons/lightMode/linkedin.png', destination: 'https://www.linkedin.com/in/amontes261/'},
                     { name: 'Discord', darkPath: '/social_icons/darkMode/discord.png', lightPath: '/social_icons/lightMode/discord.png', destination: 'https://discordapp.com/users/403355889253220352'},
                     { name: 'GitHub', darkPath: '/social_icons/darkMode/github.png', lightPath: '/social_icons/lightMode/github.png', destination: 'https://github.com/amontes261'},
                     { name: 'Instagram', darkPath: '/social_icons/darkMode/instagram.png', lightPath: '/social_icons/lightMode/instagram.png', destination: 'https://www.instagram.com/a.montes28/'},
-                    /* { name: 'Xbox', darkPath: '/social_icons/darkMode/xbox.png', lightPath: '/social_icons/lightMode/xbox.png', destination: 'https://account.xbox.com/en-us/profile?gamertag=TheMixxRemixx' }, */
+                    // { name: 'Xbox', darkPath: '/social_icons/darkMode/xbox.png', lightPath: '/social_icons/lightMode/xbox.png', destination: 'https://account.xbox.com/en-us/profile?gamertag=TheMixxRemixx' },
                 ]
-            }
+            }*/
         },
         head() {
             return {
