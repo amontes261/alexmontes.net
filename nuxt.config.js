@@ -3,18 +3,26 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - mySite',
-    title: 'mySite',
+    titleTemplate: '%s',
+    title: 'Alex Montes\' Portfolio',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: "keywords", content: "alex montes, alex, montes, amontes, amontes261, ajmx, software engineer" },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      // { property: "og:site_name", name: 'title', content: 'Alex Montes\' Portfolio' },
+      // { property: "og:title", name: 'title', content: 'Alex Montes\'s Portfolio' },
+      { property: "og:url", name: 'url', content: 'https://alexmontes.net' },
+      { property: "og:image", name: 'image', content: 'https://alexmontes.net/logo_darkMode.png' },
+      { property: "og:theme-color", name: 'theme-color', content: '#ffffff' },
     ],
     link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Mulish&display=swap' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
