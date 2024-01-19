@@ -1,5 +1,5 @@
 <template>
-    <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeContainer-widescreen' : ''">
+    <div v-if="false" :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'homeContainer-widescreen' : ''">
         <div class="homeContent">
             <div>
                 <div :class="$vuetify.breakpoint.width >= mobileViewpointWidthTipover ? 'leftContent-widescreen' : 'topContent-tallscreen'">
