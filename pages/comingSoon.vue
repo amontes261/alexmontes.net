@@ -4,16 +4,14 @@
             <div class="textContainer">
                 <div class="headerContainer">
                     <div class="almostThereHeader">
-                        Almost There.
+                        Almost There
                     </div>
                 </div>
                 <div class= "smallTextContainer">
                     <div>
-                        This portfolio is still under development. Check out the
-                        <a class="repoLink" href="https://github.com/amontes261/mySite" target="_blank">repository</a>
-                        for updates.
+                        This portfolio is still under development.
                     </div>
-                    <div class="pt-4 completionText divSpacer"> Expected completion: Fall 2024 </div>
+                    <div class="pt-4 completionText divSpacer"> Expected completion: Fall 2026 </div>
                 </div>
                 <img class="pt-7" width="75" src="/logo_darkMode.png" />
             </div>
